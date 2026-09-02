@@ -117,38 +117,26 @@ function quickMessage(text) {
 }
 
 
-function sendMessage() {
-
-    const input =
-        document
-        .getElementById("messageInput");
-
-
-    const message =
-        input.value.trim();
-
-
+async function sendMessage() {
+    const input = document.getElementById("messageInput");
+    const message = input.value.trim();
     if (!message) return;
 
-
     addUserMessage(message);
-
-
     input.value = "";
 
-
-    setTimeout(() => {
-
-        addKryptonMessage(
-            "Actualmente estoy en modo interfaz. " +
-            "La siguiente fase conectará mi motor de inteligencia artificial " +
-            "especializado en refrigeración, electrodomésticos y electrónica."
-        );
-
-    }, 700);
-
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({mensaje: message})
+        });
+        const data = await response.json();
+        addKryptonMessage(data.respuesta || "⚠️ Error al procesar la consulta.");
+    } catch (error) {
+        addKryptonMessage("⚠️ No puedo conectar con el motor de Krypton AI.");
+    }
 }
-
 
 function addUserMessage(message) {
 
