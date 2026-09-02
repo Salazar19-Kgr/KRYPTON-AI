@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+import os
 
 class KryptonHandler(BaseHTTPRequestHandler):
 
@@ -78,9 +79,10 @@ def analizar_problema(mensaje):
 
 
 if __name__ == "__main__":
-    server = HTTPServer(("0.0.0.0", 5000), KryptonHandler)
+    PORT = int(os.environ.get("PORT", 5000))
+    server = HTTPServer(("0.0.0.0", PORT), KryptonHandler)
 
     print("⚡ Krypton AI Backend iniciado")
-    print("📡 Servidor en puerto 5000")
+    print(f"📡 Servidor en puerto {PORT}")
 
     server.serve_forever()
