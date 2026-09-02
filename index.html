@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KRYPTON AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="bubble b4"></div>
+    <div class="bubble b5"></div>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<section id="loginScreen" class="screen active">
+
+    <div class="glass login-card">
+
+        <div class="logo-circle">
+            <span>K</span>
+        </div>
+
+        <h1>KRYPTON <span>AI</span></h1>
+
+        <p class="subtitle">
+            INTELIGENCIA ARTIFICIAL COMPLEJA
+        </p>
+
+        <h3>Iniciar sesión en Krypton AI</h3>
+
+        <div class="input-group">
+
+            <label>📧 Correo electrónico</label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Correo electrónico"
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>🔒 Contraseña</label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Contraseña"
+            >
+
+        </div>
+
+
+        <button class="main-button" onclick="login()">
+
+            INICIAR SESIÓN
+
+        </button>
+
+
+        <div class="divider">
+
+            <span>o continúa con</span>
+
+        </div>
+
+
+        <button class="google-button" onclick="continueWithoutGoogle()">
+
+            <span class="google-icon">G</span>
+
+            Continuar con Google
+
+        </button>
+
+
+        <small>
+
+            Al continuar, aceptas nuestros
+            Términos de servicio y Política de privacidad
+
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- BIENVENIDA -->
+
+<section id="welcomeScreen" class="screen">
+
+    <div class="glass welcome-card">
+
+        <div class="logo-circle">
+            <span>K</span>
+        </div>
+
+        <h2>¡Bienvenido a Krypton AI!</h2>
+
+        <p>
+
+            Antes de comenzar, dinos cómo te llamas.
+
+        </p>
+
+
+        <div class="input-group">
+
+            <label>Nombre completo</label>
+
+            <input
+                id="username"
+                type="text"
+                placeholder="Escribe tu nombre"
+            >
+
+        </div>
+
+
+        <p id="nameError" class="error"></p>
+
+
+        <button
+            class="main-button"
+            onclick="saveName()"
+        >
+
+            CONTINUAR
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- APP PRINCIPAL -->
+
+<section id="appScreen" class="screen">
+
+    <div class="app-container">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="glass sidebar">
+
+            <div class="brand">
+
+                <div class="small-logo">
+
+                    K
+
+                </div>
+
+                <span>KRYPTON AI</span>
+
+            </div>
+
+
+            <button class="menu-button">
+
+                ☰
+
+            </button>
+
+
+            <div class="user-box">
+
+                <div class="avatar" id="avatar">
+
+                    K
+
+                </div>
+
+                <div>
+
+                    <strong id="userDisplay">
+
+                        Usuario
+
+                    </strong>
+
+                    <p>Usuario Krypton</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-footer">
+
+                KRYPTON AI
+
+                <br>
+
+                Tu asistente técnico inteligente
+
+            </div>
+
+        </aside>
+
+
+        <!-- CHAT -->
+
+        <main class="glass chat-container">
+
+
+            <header class="chat-header">
+
+                <div>
+
+                    <h2>KRYPTON AI</h2>
+
+                    <p>
+
+                        ∞ Inteligencia artificial compleja
+
+                    </p>
+
+                    <span>
+
+                        Diseñada para ayudarte con tus problemas
+                        de ingeniería o electrónica.
+
+                    </span>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button>⌕</button>
+
+                    <button>⚙</button>
+
+                </div>
+
+            </header>
+
+
+            <div
+                id="chatMessages"
+                class="chat-messages"
+            >
+
+
+                <div class="message krypton-message">
+
+                    <div class="message-avatar">
+
+                        K
+
+                    </div>
+
+
+                    <div class="message-content">
+
+                        <strong>👋 Hola, ¿qué tal?</strong>
+
+                        <p>
+
+                            Soy Krypton AI, tu asistente técnico
+                            especializado.
+
+                        </p>
+
+                        <p>
+
+                            ¿Tienes algún problema o duda?
+                            Cuéntame qué está ocurriendo y
+                            trabajaremos juntos para encontrar
+                            una solución.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BOTONES RÁPIDOS -->
+
+            <div class="quick-actions">
+
+                <button onclick="quickMessage('Refrigeración')">
+
+                    ❄️ Refrigeración
+
+                </button>
+
+                <button onclick="quickMessage('Electrodomésticos')">
+
+                    🔌 Electrodomésticos
+
+                </button>
+
+                <button onclick="quickMessage('Electrónica')">
+
+                    ⚡ Electrónica
+
+                </button>
+
+                <button onclick="quickMessage('Diagnóstico técnico')">
+
+                    🛠️ Diagnóstico
+
+                </button>
+
+                <button onclick="document.getElementById('imageInput').click()">
+
+                    📸 Analizar imagen
+
+                </button>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="chat-input">
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+                <button
+                    onclick="document.getElementById('imageInput').click()"
+                >
+
+                    📎
+
+                </button>
+
+
+                <input
+                    id="messageInput"
+                    type="text"
+                    placeholder="Escribe tu problema o duda..."
+                >
+
+
+                <button>
+
+                    🎤
+
+                </button>
+
+
+                <button
+                    class="send-button"
+                    onclick="sendMessage()"
+                >
+
+                    ➤
+
+                </button>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+</section>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
