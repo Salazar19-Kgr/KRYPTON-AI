@@ -887,3 +887,145 @@ small {
     }
 
 }
+/* ================================
+   KRYPTON AI — LIQUID GLASS MOTION
+================================ */
+
+body {
+    overflow-x: hidden;
+}
+
+/* Fondo tecnológico animado */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    z-index: -1;
+    animation: kryptonFloat 14s infinite alternate ease-in-out;
+}
+
+body::before {
+    top: -150px;
+    left: -150px;
+    background: #6fb7ff;
+}
+
+body::after {
+    bottom: -150px;
+    right: -150px;
+    background: #8fd3ff;
+    animation-delay: -6s;
+}
+
+@keyframes kryptonFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(180px, 100px) scale(1.25);
+    }
+}
+
+/* Cristal con movimiento de luz */
+.glass,
+.chat-container,
+.message,
+.category,
+.chat-input,
+.login-card,
+.welcome-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.glass::before,
+.chat-container::before,
+.message::before,
+.login-card::before,
+.welcome-card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -60%;
+    width: 55%;
+    height: 300%;
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.65),
+        rgba(255,255,255,0.08),
+        transparent
+    );
+    transform: rotate(18deg);
+    animation: liquidReflection 7s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes liquidReflection {
+    0% {
+        left: -80%;
+    }
+
+    100% {
+        left: 140%;
+    }
+}
+
+/* Botones flotantes */
+.category,
+button {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.category:hover,
+button:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow:
+        0 12px 35px rgba(60, 150, 255, 0.25),
+        0 0 25px rgba(120, 190, 255, 0.35);
+}
+
+/* Mensajes apareciendo suavemente */
+.message {
+    animation: messageAppear 0.6s ease forwards;
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Resplandor suave en los elementos principales */
+.chat-container,
+.login-card,
+.welcome-card {
+    animation: kryptonGlow 5s infinite alternate ease-in-out;
+}
+
+@keyframes kryptonGlow {
+    from {
+        box-shadow:
+            0 10px 40px rgba(80, 160, 255, 0.12);
+    }
+
+    to {
+        box-shadow:
+            0 15px 65px rgba(80, 170, 255, 0.32);
+    }
+}
